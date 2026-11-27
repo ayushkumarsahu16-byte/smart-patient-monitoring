@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+body { @apply bg-mist text-ink font-sans antialiased; }
+
+:focus-visible { outline: 2px solid #0F7C7A; outline-offset: 2px; }
+
+@layer components {
+  .field { @apply w-full rounded-md border border-line bg-white px-3 py-2 text-sm text-ink placeholder:text-ink/40 focus:border-teal focus:outline-none; }
+  .label { @apply mb-1 block text-sm font-semibold text-ink; }
+  .btn { @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-bold transition-colors disabled:opacity-50; }
+  .btn-primary { @apply btn bg-teal text-white hover:bg-teal-dark; }
+  .btn-quiet { @apply btn border border-line bg-white text-ink hover:bg-teal-soft; }
+  .btn-danger { @apply btn bg-coral text-white hover:opacity-90; }
+}
+
+/* Login ECG trace: the one animated moment in the app */
+.ecg-line { stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: ecg 4.5s linear infinite; }
+@keyframes ecg { to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .ecg-line { animation: none; stroke-dashoffset: 0; }
+}
